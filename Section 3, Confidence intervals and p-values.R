@@ -68,7 +68,8 @@ ci <- c(d_hat - qnorm(0.975)*se_hat, d_hat + qnorm(0.975)*se_hat)
       #interval for the estimate.
 
 pollster_results <- polls %>%
-  mutate(X_hat = (d_hat+1)/2,
+  mutate(d_hat = (rawpoll_clinton - rawpoll_trump)/100,
+         X_hat = (d_hat+1)/2,
          se_hat = 2*sqrt(X_hat*(1-X_hat)/samplesize),
          lower = d_hat - qnorm(0.975)*se_hat,
          upper = d_hat + qnorm(0.975)*se_hat) %>%
